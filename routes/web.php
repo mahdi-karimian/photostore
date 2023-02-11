@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('create/category', function () {
+    $create = Category::create([
+        'title' => 'London to Paris',
+        'slug' => 'sludg' ]);
+    if (!$create = true) {
+     return "recorde not ok";
+    }
+    return "create successfully";
+
+
+
+
 });
