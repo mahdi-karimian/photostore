@@ -33,7 +33,7 @@ class CategoriesController extends Controller
 
     public function all()
     {
-        $categories = Category::all();
+        $categories = Category::paginate(3);
 
         return view('admin.categories.all',compact('categories'));
     }
