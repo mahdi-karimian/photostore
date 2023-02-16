@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Categories\UpdateRequest;
 use App\Http\Requests\Admin\StoreRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -35,6 +36,34 @@ class CategoriesController extends Controller
     {
         $categories = Category::paginate(3);
 
-        return view('admin.categories.all',compact('categories'));
+        return view('admin.categories.all', compact('categories'));
+    }
+
+    public function delete($category_id)
+    {
+        $category = Category::find($category_id);
+        $category->delete();
+        return back()->with('success', 'دسته بندی حذف شد ');
+    }
+
+    public function edit($category_id)
+    {
+        $category = Category::find($category_id);
+        return view('admin.categories.edit', compact('category'));
+    }
+
+    public function update(UpdateRequest $request, $category_id)
+    {
+        $validatedData = $request->validated();
+        $category = Category::find($category_id);
+        $updatedCategory = $category->update([
+            'title' => $validatedData['title'],
+            'slug' => $validatedData['slug'],
+        ]);
+        if (!$updatedCategory) {
+            return back()->with('failed', 'بروزرسانی با مشکل مواجه شد  ');
+        }
+        return back()->with('success', 'بروزرسانی با موفقیت انجام شد   ');
+
     }
 }
