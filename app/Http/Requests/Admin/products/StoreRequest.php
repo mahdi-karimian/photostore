@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin;
+namespace App\Http\Requests\Admin\products;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,8 +24,13 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:3|max:128|unique:categories,title',
-            'slug' => 'required|min:3|max:128|unique:categories,slug',
+            'title'=>'required|min:3|max:128',
+            'category_id'=>'required|exists:categories,id',
+            'price'=>'required|numeric',
+            'thumbnail_url'=>'required|image|mimes:png,jpg,jpeg',
+            'demo_url'=>'required|image|mimes:png,jpg,jpeg',
+            'source_url'=>'required|image|mimes:png,jpg,jpeg',
+            'description'=>'required|min:10',
         ];
     }
 }

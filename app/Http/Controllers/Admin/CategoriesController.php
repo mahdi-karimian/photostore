@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Categories\UpdateRequest;
-use App\Http\Requests\Admin\StoreRequest;
+use App\Http\Requests\Admin\categories\StoreRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 

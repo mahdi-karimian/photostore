@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Admin\ProductsController;
 use Illuminate\Support\Facades\Route;
+
+
 
 //admin/categories/create
 
@@ -14,6 +17,10 @@ Route::prefix('admin')->group(function () {
         Route::get('{category_id}/edit',[CategoriesController::class,'edit'])->name('admin.categories.edit');
         Route::put('{category_id}/update',[CategoriesController::class,'update'])->name('admin.categories.update');
      });
+    Route::prefix('products')->group(function (){
+       Route::get('create',[ProductsController::class,'create'])->name('admin.products.create');
+       Route::post('',[ProductsController::class,'store'])->name('admin.products.store');
+    });
 });
 
 
