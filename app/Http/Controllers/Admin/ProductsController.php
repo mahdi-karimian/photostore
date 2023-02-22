@@ -15,6 +15,12 @@ use App\Utilities\ImageUploader;
 
 class ProductsController extends Controller
 {
+    public function all()
+    {
+        $products= Product::paginate(10);
+        return view('admin.products.all',compact('products'));
+
+    }
     public function create()
     {
         $categories = Category::all();
@@ -57,4 +63,18 @@ class ProductsController extends Controller
 
     }
 
+    public function downloadDemo($product_id)
+    {
+        $product = Product::findOrFail($product_id);
+       //dd('/public/'.$product->demo_url);
+        return response()->download(public_path('/public/'.$product->demo_url));
+    }
+
+    public function downloadSource($product_id)
+    {
+        $product = Product::findOrFail($product_id);
+ //dd(storage_path('app/local_storage/'.$product->source_url));
+        return response()->download(storage_path('app/local_storage/'.$product->source_url) );
+
+    }
 }
