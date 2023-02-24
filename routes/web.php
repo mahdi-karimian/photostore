@@ -20,9 +20,11 @@ Route::prefix('admin')->group(function () {
         Route::get('', [ProductsController::class, 'all'])->name('admin.products.all');
         Route::get('create', [ProductsController::class, 'create'])->name('admin.products.create');
         Route::post('', [ProductsController::class, 'store'])->name('admin.products.store');
-       Route::get('{product_id}/downloadDemo',[ProductsController::class,'downloadDemo'])->name('admin.product.download.demo');
-       Route::get('{product_id}/downloadSource',[ProductsController::class,'downloadSource'])->name('admin.product.download.source');
-       Route::delete('{product_id}/delete',[ProductsController::class,'delete'])->name('admin.product.delete');
+        Route::get('{product_id}/downloadDemo', [ProductsController::class, 'downloadDemo'])->name('admin.product.download.demo');
+        Route::get('{product_id}/downloadSource', [ProductsController::class, 'downloadSource'])->name('admin.product.download.source');
+        Route::delete('{product_id}/delete', [ProductsController::class, 'delete'])->name('admin.product.delete');
+        Route::get('{product_id}/edit', [ProductsController::class, 'edit'])->name('admin.products.edit');
+        Route::put('{product_id}/update', [ProductsController::class, 'update'])->name('admin.products.update');
     });
 });
 
