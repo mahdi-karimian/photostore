@@ -32,7 +32,7 @@ Route::prefix('admin')->group(function () {
         Route::get('create', [UsersController::class, 'create'])->name('admin.users.create');
         Route::post('', [UsersController::class, 'store'])->name('admin.users.store');
         Route::get('{user_id}/edit', [UsersController::class, 'edit'])->name('admin.users.edit');
-        Route::get('{user_id}/delete', [UsersController::class, 'delete'])->name('admin.users.delete');
+        Route::delete('{user_id}/delete', [UsersController::class, 'delete'])->name('admin.users.delete');
         Route::put('{user_id}/update', [UsersController::class, 'update'])->name('admin.users.update');
     });
 });

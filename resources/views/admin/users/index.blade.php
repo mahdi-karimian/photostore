@@ -21,6 +21,7 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
+            @include('errors.message')
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -55,7 +56,7 @@
                                     <td>{{$user->name}}</td>
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->mobile}}</td>
-                                    <td>{{$user->role == 'admin'?'ادمین':'کاربر'}}</td>
+                                    <td>{{$user->role == 'admin'?'مدیر':'کاربر عادی'}}</td>
                                     <td>{{$user->created_at}}</td>
                                     <td>
 

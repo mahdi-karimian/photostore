@@ -45,8 +45,7 @@
                                                 <label>دسته بندی</label>
                                                 <select class="form-control" name="category_id">
                                                     @foreach($categories as $category)
-                                                        <option
-                                                            value="{{$category->id}}" {{$category->id == $product->category_id ? 'selected' : ''}}>{{$category->title}}</option>
+                                                        <option value="{{$category->id}}" {{$category->id == $product->category_id ? 'selected' : ''}}>{{$category->title}}</option>
                                                     @endforeach
 
                                                 </select>
