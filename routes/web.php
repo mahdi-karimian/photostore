@@ -5,11 +5,17 @@ use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\PaymentsController;
+use App\Http\Controllers\Home\HomeController;
+use App\Http\Controllers\Home\ProductsController as HomeProductsController;
 use Illuminate\Support\Facades\Route;
 
+#home routes
+Route::prefix('')->group(function () {
+    Route::get('', [HomeProductsController::class, 'index'])->name('home.products.all');
+    Route::get('{product_id}/show',[HomeProductsController::class,'show'])->name('home.product.show');
+});
 
-//admin/categories/create
-
+//admin routes
 Route::prefix('admin')->group(function () {
     Route::prefix('categories')->group(function () {
         Route::get('', [CategoriesController::class, 'all'])->name('admin.categories.all');
@@ -40,8 +46,8 @@ Route::prefix('admin')->group(function () {
     Route::prefix('orders')->group(function () {
         Route::get('', [OrdersController::class, 'all'])->name('admin.orders.all');
     });
-    Route::prefix('payments')->group(function (){
-        Route::get('',[PaymentsController::class,'all'])->name('admin.payments.all');
+    Route::prefix('payments')->group(function () {
+        Route::get('', [PaymentsController::class, 'all'])->name('admin.payments.all');
     });
 });
 
