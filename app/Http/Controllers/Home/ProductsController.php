@@ -11,9 +11,12 @@ class ProductsController extends Controller
 {
     public function index(Request $request)
     {
+
+        //$this->findFilter($request?->filter,$request?->action);
+
         $products = null;
         if ($request->has('search')) {
-            $products = Product::where('title','LIKE','%'. $request->input('search').'%')->get();
+            $products = Product::where('title', 'LIKE', '%' . $request->input('search') . '%')->get();
         } else {
             $products = Product::all();
 
@@ -22,6 +25,11 @@ class ProductsController extends Controller
         $categories = Category::all();
         return view('frontend.products.all', compact('products', 'categories'));
     }
+
+//    public function findFilter(string|null $className, string|null $methodName)
+//    {
+//
+//    }
 
     public function show($product_id)
     {

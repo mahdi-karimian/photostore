@@ -40,6 +40,7 @@ class ProductsController extends Controller
             'category_id' => $validatedData['category_id'],
             'owner_id' => $admin->id,
         ]);
+        return $this->uploadImages($createdProduct,$validatedData);
 
     }
 
@@ -116,7 +117,9 @@ class ProductsController extends Controller
 
             $updatedProduct = $createdProduct->update($data);
             if (!$updatedProduct) {
+
                 throw new \Exception('تصویری آپلود نشد ');
+
             }
             return back()->with('success', 'محصول مورد نظر بروزرسانی شد  ');
         } catch (\Exception $e) {

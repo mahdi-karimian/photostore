@@ -23,7 +23,7 @@ class ImageUploader
             if (!is_null($image)) {
                 self::upload($images, $fullPath, $diskType);
             }
-            //  Storage::disk($diskType)->put($fullPath, File::get($image));
+              Storage::disk($diskType)->put($fullPath, File::get($image));
             $imagesPath += [$key => $fullPath];
         }
         return $imagesPath;
