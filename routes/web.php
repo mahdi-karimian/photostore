@@ -11,7 +11,6 @@ use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Home\ProductsController as HomeProductsController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('pay', [PaymentController::class, 'pay']);
 
 #home routes
 Route::prefix('')->group(function () {
@@ -59,7 +58,10 @@ Route::prefix('admin')->group(function () {
 });
 
 
-
+Route::prefix('payment')->group(function (){
+    Route::get('pay',[PaymentController::class,'pay'])->name('payment.pay');
+    Route::get('callback',[PaymentController::class,'callback'])->name('payment.callback');
+});
 
 
 

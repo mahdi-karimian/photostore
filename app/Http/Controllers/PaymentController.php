@@ -19,4 +19,9 @@ class PaymentController extends Controller
        $paymentService = new PaymentService(PaymentService::IDPAY,$IDPayRequest);
        $paymentService->pay() ;
     }
+
+    public function callback()
+    {
+        
+    }
 }
