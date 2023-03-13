@@ -3,17 +3,17 @@
 namespace App\Services\Payment;
 
 use App\Services\Payment\Contracts\RequestInterface;
-use App\Services\Payment\Exeptions\ProviderNotFoundException;
+use App\Services\Payment\Exceptions\ProviderNotFoundException;
 
 class PaymentService
 {
     public const IDPAY = 'IDPayProvider';
-    public const ZARINPAL = 'ZARINPALProvider';
+    public const ZARINPAL = 'ZarinpalProvider';
 
 
-    public function __construct(private string $providerName, private RequestInterface $request)
+    public function __construct(private string           $providerName,
+                                private RequestInterface $request)
     {
-
     }
 
     public function pay()

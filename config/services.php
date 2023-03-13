@@ -29,5 +29,10 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    'gateways'=>[
+        'id-pay'=>[
+            'api-key'=>'6a7f99eb-7c20-4412-a972-6dfb7cd253a4',
+        ]
+    ]
 
 ];
